@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Запуск задачи</title>
+</head>
+<body>
+  {% if status %}
+    <h2>{{ status }}</h2>
+  {% endif %}
+
+  <h1>Введите количество секунд</h1>
+  <form method="post" action="{% url 'start_task' %}">
+    {% csrf_token %}
+    <input type="number" name="seconds" min="1" value="5">
+    <button type="submit">Старт</button>
+  </form>
+</body>
+</html>

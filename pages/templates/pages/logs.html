@@ -2,7 +2,21 @@
 <html>
 <head>
   <title>Логи выполнения</title>
-  <!-- <script>  </script> -->
+  <script>
+    async function fetchLogs() {
+      const response = await fetch("{% url 'get_logs' %}");
+      const data = await response.json();
+      const logsDiv = document.getElementById("logs");
+      logsDiv.innerHTML = data.logs.join("<br>");
+      if (!data.running) {
+        setTimeout(() => {
+          window.location.href = "/?status=Задача успешно завершена!";
+        }, 10000); // через 10 секунд перенаправляем на домашнюю страницу
+      }
+    }
+    setInterval(fetchLogs, 2000); // обновляем каждые 2 сек
+    window.onload = fetchLogs;
+  </script>
 </head>
 <body>
   <h1>Выполнение задачи...</h1>

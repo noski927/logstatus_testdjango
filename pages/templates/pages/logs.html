@@ -11,10 +11,10 @@
       if (!data.running) {
         setTimeout(() => {
           window.location.href = "/?status=Задача успешно завершена!";
-        }, 10000); // через 10 секунд перенаправляем на домашнюю страницу
+        }, 3000); // через 3 секунды перенаправляем на домашнюю страницу
       }
     }
-    setInterval(fetchLogs, 2000); // обновляем каждые 2 сек
+    setInterval(fetchLogs, 1000); // обновляем каждые 1 сек
     window.onload = fetchLogs;
   </script>
 </head>

@@ -33,16 +33,16 @@ def long_process(num_seconds: int):
 1. создание виртуального окружения с помощью conda (или venv)
 
    ```
-   conda env create -f dev.yml && conda activate test-task-django
+   conda env create -f env.yml && conda activate test-task-django
 
-   mamba env create -f dev.yml && mamba activate test-task-django
+   mamba env create -f env.yml && mamba activate test-task-django
    ```
 2. Создание тестовой базы данных
 
-   `python manage migrate`
+   `python manage.py migrate`
 3. Запуск сервера django
 
-   `python manage runserver`
+   `python manage.py runserver`
 
 ## Docker 🐳
 

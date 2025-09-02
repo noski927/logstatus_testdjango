@@ -14,7 +14,8 @@
 * При нажатии на кнопку "Старт" на бэкэнде запускается функция long_process (см. пример ниже), а пользователь перенаправляется на страницу, где будет выводиться логи от данной функции. Логи должны регулярно обновляются (например каждые 2-3 секунды).
 
 ```
-import timedef long_process(num_seconds: int):
+import time
+def long_process(num_seconds: int):
    for i in range(num_seconds):
       print(f"Running for {i} seconds...")
     	time.sleep(1)

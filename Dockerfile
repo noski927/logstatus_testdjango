@@ -1,8 +1,20 @@
 FROM continuumio/miniconda3:latest
 WORKDIR /app
+
+# Копируем conda-окружение
 COPY env.yml /app/
+
+# Создаем окружение
 RUN conda env create -f env.yml
-SHELL ["conda", "run", "-n", "test-task-django", "/bin/bash", "-c"]
+
+# Настраиваем shell для всех следующих команд (ключевой момент!)
+SHELL ["conda", "run", "-n", "testdjango", "/bin/bash", "-c"]
+
+# Копируем проект
 COPY . /app/
-EXPOSE 8000
-CMD ["conda", "run", "-n", "test-task-django", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+# Чтобы внутри контейнера сразу был доступ к окружению
+ENV PATH="/opt/conda/envs/testdjango/bin:$PATH"
+
+# Запускаем Django через conda
+CMD ["bash", "-c", "conda run -n testdjango python manage.py runserver 0.0.0.0:8000"]

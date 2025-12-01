@@ -13,22 +13,26 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(os.path.join(BASE_DIR, ".env"))
+# load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+# SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+SECRET_KEY = "django-insecure-08=qz@2m3c!#a^9qfr4ogkzld4lrlpb$!zp7hn#2r)kr4#u@!u"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
+# DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 DEBUG = "True"
-ALLOWED_HOSTS = ["*"]
+
+# ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 
 
 # Application definition
@@ -137,8 +141,8 @@ CACHES = {
 }
 
 
-CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", "redis://redis_server:6379/0")
-CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", "redis://redis_server:6379/0")
+CELERY_BROKER_URL = "redis://redis_server:6379/0"
+CELERY_RESULT_BACKEND = "redis://redis_server:6379/0"
 
 # CELERY_ACCEPT_CONTENT = ["json"]
 # CELERY_TASK_SERIALIZER = "json"
